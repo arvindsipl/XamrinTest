@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestApp"
+             xmlns:viewModels="clr-namespace:TestApp.ViewModel"
+             x:Class="TestApp.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:TodoListViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <ListView ItemsSource="{Binding TodoItems}" HasUnevenRows="True" SeparatorVisibility="None" ItemSelected="OnItemSelected" CachingStrategy="RecycleElementAndDataTemplate">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!-- Use a Grid for more complex layout -->
+                        <Grid Padding="10" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <!-- Define row heights based on content -->
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!-- Display the Title -->
+                            <Label Grid.Row="0" Text="{Binding title}" FontSize="16" FontAttributes="Bold" />
+                            <!-- Display the Completed status -->
+                            <Label Grid.Row="1" Text="{Binding completed, StringFormat='Completed: {0}'}" FontSize="14" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
+

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TestApp.ViewModel"
+             x:Class="TestApp.Views.TodoDetailPage"
+             Title="TodoDetailPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:TodoDetailViewModel/>
+    </ContentPage.BindingContext>
+
+     <StackLayout Orientation="Vertical" IsVisible="{Binding IsDataLoaded}" Spacing="3" Margin="10">
+        <!-- Title -->
+        <Label Text="Title:" FontAttributes="Bold" />
+        <Label Text="{Binding SelectedItem.title}" />
+
+        <!-- Status -->
+        <Label Text="Status:" FontAttributes="Bold" />
+        <Label Text="{Binding SelectedItem.completed, StringFormat='Completed: {0}'}" />
+
+        <!-- User ID -->
+        <Label Text="User ID:" FontAttributes="Bold" />
+        <Label Text="{Binding SelectedItem.userId}" />
+
+         <!-- ID -->
+        <Label Text="ID:" FontAttributes="Bold" />
+        <Label Text="{Binding SelectedItem.id}" />
+
+    </StackLayout>
+
+</ContentPage>
